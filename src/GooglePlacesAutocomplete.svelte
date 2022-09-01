@@ -6,6 +6,11 @@ export let apiKey
 export let options = undefined
 export let placeholder = undefined
 export let value = ''
+export let change = (e) => {};
+export let blur = () => {};
+export let name
+export let id
+
 
 const dispatch = createEventDispatcher()
 
@@ -45,9 +50,12 @@ function hasLocationData(place) {
   return place.hasOwnProperty(fieldsToLookFor[0])
 }
 
-function onChange() {
+function onChange(e) {
   if (inputField.value === '') {
     setSelectedLocation(null)
+  }
+  if(change) {
+    change(e)
   }
 }
 
@@ -97,5 +105,5 @@ function doesNotMatchSelectedLocation(value) {
 }
 </script>
 
-<input bind:this={inputField} class={$$props.class} on:change={onChange}
+<input name={name} id={id} bind:this={inputField} class={$$props.class} on:blur={blur} on:change={onChange}
        on:keydown={onKeyDown} {placeholder} {value} />

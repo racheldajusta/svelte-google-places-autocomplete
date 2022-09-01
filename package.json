@@ -18,7 +18,7 @@
     "autobuildTest": "rollup -c test/rollup.config.js -w",
     "build": "rollup -c",
     "prepublishOnly": "npm run build",
-    "sirvTest": "sirv test --port 8086 --single --dev",
+    "sirvTest": "sirv test --port 3232 --single --dev",
     "test": "run-p autobuild autobuildTest sirvTest"
   },
   "devDependencies": {
